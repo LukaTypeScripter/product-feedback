@@ -1,1 +1,98 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;600&display=swap');
+:root {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    --radial-gradient: radial-gradient(128.88% 128.88% at 103.9% -10.39%,#e84d70 0%,#a337f6 53.09%,#28a7ed 100%);
+    --purple: #ad1fea;
+    --purple-hover: #c75af6;
+    --blue: #4661e6;
+    --blue-hover: #7c91f9;
+    --blue-light: #62bcfa;
+    --orange: #f49f85;
+    --red: #d73737;
+    --red-hover: #e98888;
+    --grey-darkest: #373f68;
+    --grey-darker: #3a4374;
+    --grey-darker-15: rgba(58,67,115,0.15);
+    --grey-darker-hover: #656ea3;
+    --grey-dark: #647196;
+    --grey-hover: #cfd7ff;
+    --input-placeholder: #8c92b3;
+    --grey: #f2f4ff;
+    --grey-75: rgba(240,242,255,0.75);
+    --grey-light: #f7f8fd;
+    --h1: 1.5rem;
+    --h1-lh: 35px;
+    --h1-ls: -0.33px;
+    --h2: 1.25rem;
+    --h2-lh: 29px;
+    --h2-ls: -0.25px;
+    --h3: 1.125rem;
+    --h3-lh: 26px;
+    --h3-ls: -0.25px;
+    --h4: 0.875rem;
+    --h4-lh: 20px;
+    --h4-ls: -0.2px;
+    --body: 1rem;
+    --body-lh: 23px;
+    --body-s: 0.938rem;
+    --body-s-lh: 22px;
+    --body-xs: 0.813rem;
+    --body-xs-lh: 19px;
+    --max-width: 1100px;
+    --max-width-s: 730px;
+}
+* {
+    font-family: 'Jost', sans-serif;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+h2 {
+    font-size: 1.25rem;
+    font-size: var(--h2);
+    line-height: 29px;
+    line-height: var(--h2-lh);
+    letter-spacing: -.25px;
+    letter-spacing: var(--h2-ls);
+}
+h3 {
+    font-size: 1.125rem;
+    font-size: var(--h3);
+    line-height: 26px;
+    line-height: var(--h3-lh);
+    letter-spacing: -.25px;
+    letter-spacing: var(--h3-ls);
+}
+.body-s {
+    font-size: .938rem;
+     font-size: var(--body-s); 
+     line-height: 22px; 
+     line-height: var(--body-s-lh); 
+}
+body {
+    background-color: #f7f8fd;
+    background-color: var(--grey-light);
+    position: relative;
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+.tab {
+    display: inline-block;
+    text-transform: capitalize;
+    background-color: var(--grey);
+    color: var(--blue);
+    border-radius: 10px;
+    padding: 6px 16px;
+    font-weight: 600;
+    border: none;
+}
+.body {
+    font-size: 1rem;
+    font-size: var(--body);
+    line-height: 23px;
+    line-height: var(--body-lh);
+}
