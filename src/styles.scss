@@ -96,3 +96,26 @@ body {
     line-height: 23px;
     line-height: var(--body-lh);
 }
+button{
+    outline: none;
+    background: none;
+    border: none;
+}
+.btn {
+    background: none;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    text-align: center;
+    transition: background-color .2s ease-in-out;
+    padding: 12px 24px;
+    border-radius: 10px;
+    min-width: 160px;
+    font-size: 14px;
+}
+.body-xs {
+    font-size: .813rem;
+    font-size: var(--body-xs);
+    line-height: 19px;
+    line-height: var(--body-xs-lh);
+}

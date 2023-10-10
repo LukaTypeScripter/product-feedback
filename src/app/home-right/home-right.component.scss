@@ -1,0 +1,94 @@
+.home__right {
+    width: 100%;
+}
+
+.home__right__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--grey-darkest);
+    padding: 14px 16px 14px 24px;
+    border-radius: 10px;
+    margin-bottom: 24px;
+    &__inner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    &__suggestions {
+        color: #fff;
+        margin: 0 34px 0 16px;
+    }
+    &__dropdown__outer {
+        position: relative;
+    }
+    &__dropdown__btn {
+        cursor: pointer;
+        color: #fff;
+        transition: all .2s ease-in-out;
+        font-size: var(--h4);
+        padding: 4px;
+        span {
+            font-weight: 700;
+            margin-right: 8px;
+        }
+    }
+}
+.btn.bg__color {
+    background-color: var(--purple);
+    color: #fff;
+    font-weight: 700;
+}
+
+
+//suggestions
+
+.suggestions {
+    margin-top: 24px;
+    li {
+        margin-bottom: 20px;
+    }
+}
+
+.suggestion__card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 28px 32px;
+    width: 100%;
+}
+.upvote-btn {
+    transition: all .2s ease-in-out;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    background-color: var(--grey);
+    border-radius: 10px;
+    padding: 12px;
+    width: 40px;
+}
+.main {
+    transition: all .2s ease-in-out;
+    margin: 0 40px;
+    flex-grow: 1;
+}
+.m-2 {
+    margin-left: 6px;
+}
+.comments__container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+.main p {
+color: var(--grey-dark);
+}
+
+.main h3 {
+    color: var(--grey-darkest);
+}
