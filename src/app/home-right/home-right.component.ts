@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-right.component.scss']
 })
 export class HomeRightComponent {
+  sortPopUpOpen = false;
 
+  togglePopUp() {
+    this.sortPopUpOpen =!this.sortPopUpOpen;
+  }
 }

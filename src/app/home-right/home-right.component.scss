@@ -22,6 +22,9 @@
     &__dropdown__outer {
         position: relative;
     }
+    &__dropdown__btn:hover {
+        color: var(--grey-dark);
+    }
     &__dropdown__btn {
         cursor: pointer;
         color: #fff;
@@ -32,14 +35,18 @@
             font-weight: 700;
             margin-right: 8px;
         }
+      
     }
+
 }
 .btn.bg__color {
     background-color: var(--purple);
     color: #fff;
     font-weight: 700;
 }
-
+.arrow__hover:hover {
+    color: var(--grey-dark);
+}
 
 //suggestions
 
