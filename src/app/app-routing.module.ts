@@ -1,5 +1,7 @@
-import { NgModule } from '@angular/core';
+import { NgModule,OnInit } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { Data } from 'src/models/data.model';
+import { DataService } from 'src/services/data.service';
 
 const routes: Routes = [];
 
@@ -7,4 +9,6 @@ const routes: Routes = [];
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule  {
+
+ }
