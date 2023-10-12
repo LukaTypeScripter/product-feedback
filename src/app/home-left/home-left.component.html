@@ -9,12 +9,9 @@
            
         </div>
         <ul class="main__left__fillter">
-            <li><button class="body-s tab">all</button></li>
-            <li><button class="body-s tab">UI</button></li>
-            <li><button class="body-s tab">UX</button></li>
-            <li><button class="body-s tab">enhancement</button></li>
-            <li><button class="body-s tab">feature</button></li>
-            <li><button class="body-s tab">Bug</button></li>
+            <li *ngFor="let category of categories">
+                <button class="body-s tab" (click)="filterItems(category)">{{ category }}</button>
+            </li>
         </ul>
         <div class="main__left__roadmap">
             <header class="main__left__roadmap__header">
@@ -47,7 +44,7 @@
         </div>
     </section>
     <div class="home__right">
-        <app-home-right></app-home-right>
+        <app-home-right [filterItems]="filterItems"></app-home-right>
     </div>
    
     </div>

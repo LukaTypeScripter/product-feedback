@@ -1,4 +1,6 @@
-export const data = [
+import { Data } from "src/models/data.model";
+
+export const data:Data[] = [
     {
         "currentUser": {
           "image": "./assets/user-images/image-zena.jpg",

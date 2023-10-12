@@ -17,15 +17,15 @@
 
 <ul class="suggestions">
     <li>
-        <div class="suggestion__card">
+        <div class="suggestion__card" *ngFor="let comments of productReq">
             <button class="upvote-btn desktop">
                 <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg"><path d="M1 6l4-4 4 4" stroke="#4661E6" stroke-width="2" fill="none" fill-rule="evenodd"/></svg>
                 <b class="body-xs">3</b>
             </button>
-            <a href="#" class="main">
-                <h3>Preview images not loading</h3>
-                <p class="body">Challenge preview images are missing when you apply a filter.</p>
-                <div class="tab body-xs">Bug</div>
+            <a href="#" class="main" >
+                <h3>{{comments.title}}</h3>
+                <p class="body">{{comments.description}}</p>
+                <div class="tab body-xs">{{comments.category}}</div>
             </a>
             <div class="comments__container">
                 <button class="upvote-btn mobile">
