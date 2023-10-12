@@ -100,3 +100,47 @@ margin-bottom: 10px;
 .main h3 {
     color: var(--grey-darkest);
 }
+.mobile {
+    display: none;
+}
+@media (max-width: 760px)
+{
+    .home__right__nav {
+        margin-bottom: 32px;
+    padding: 8px 24px;
+    border-radius: 0;
+    }
+    .home__right__nav__inner {
+        svg {
+            display: none;
+        }
+    }
+   
+    
+}
+
+@media (max-width: 575px) {
+    .home__right__nav__suggestions{
+        display: none;
+    }
+    .desktop {
+        display: none;
+    }
+    .suggestion__card {
+        flex-direction: column;
+    }
+    .main {
+        width: 100%;
+    }
+    .comments__container {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 15px;
+    }
+    .mobile {
+        display: flex;
+    }
+    .suggestions {
+        padding: 0 24px;
+    }
+}
