@@ -1,3 +1,39 @@
+<div class="sidebar" *ngIf="!sidebarOpen">
+    <ul class="main__left__fillter">
+        <li *ngFor="let category of categories">
+            <button class="body-s tab" (click)="filterItems(category)"  [ngClass]="{ 'active': category === activeCategory }" >{{ category }}</button>
+        </li>
+    </ul>
+    <div class="main__left__roadmap">
+        <header class="main__left__roadmap__header">
+            <h3 class="main__left__roadmap__header__title">Roadmap</h3>
+            <a href="#">View</a>
+        </header>
+        <ul class="status">
+            <li>
+                <div class="status__indicator color">
+                    <div class="circle"></div>
+                    <div class="status">Planned</div>
+                </div>
+                <p class="body status__counter">2</p>
+            </li>
+            <li>
+                <div class="status__indicator ">
+                    <div class="circle color-purple"></div>
+                    <div class="status">In-Progress</div>
+                </div>
+                <p class="body status__counter">3</p>
+            </li>
+            <li>
+                <div class="status__indicator ">
+                    <div class="circle color-blue"></div>
+                    <div class="status">Live</div>
+                </div>
+                <p class="body status__counter">1</p>
+            </li>
+        </ul>
+    </div>
+</div>
 <div class="main">
     <div class="main__container">
         <section class="main__left">
@@ -6,7 +42,7 @@
                 <h1 class="main__left__intro__title">Frontend Mentor</h1>
                 <p class="body-s main__left__intro__subtitle">Feedback board</p>
             </div>
-           
+            <svg (click)="sidebarOpen = true" width="20" height="17" xmlns="http://www.w3.org/2000/svg"><g fill="#FFF" fill-rule="evenodd"><path d="M0 0h20v3H0zM0 7h20v3H0zM0 14h20v3H0z"/></g></svg>
         </div>
         <ul class="main__left__fillter">
             <li *ngFor="let category of categories">
@@ -24,27 +60,27 @@
                         <div class="circle"></div>
                         <div class="status">Planned</div>
                     </div>
-                    <p class="body status__counter">3</p>
+                    <p class="body status__counter">2</p>
                 </li>
                 <li>
-                    <div class="status__indicator color">
-                        <div class="circle"></div>
-                        <div class="status">Planned</div>
+                    <div class="status__indicator ">
+                        <div class="circle color-purple"></div>
+                        <div class="status">In-Progress</div>
                     </div>
                     <p class="body status__counter">3</p>
                 </li>
                 <li>
-                    <div class="status__indicator color">
-                        <div class="circle"></div>
-                        <div class="status">Planned</div>
+                    <div class="status__indicator ">
+                        <div class="circle color-blue"></div>
+                        <div class="status">Live</div>
                     </div>
-                    <p class="body status__counter">3</p>
+                    <p class="body status__counter">1</p>
                 </li>
             </ul>
         </div>
     </section>
     <div class="home__right">
-        <app-home-right [filterItems]="filterItems" [filteredData]="filteredData"></app-home-right>
+        <app-home-right [filterItems]="filterItems" [filteredData]="filteredData" (sideBarOpen)="toggleSidebar($event)"></app-home-right>
     </div>
    
     </div>

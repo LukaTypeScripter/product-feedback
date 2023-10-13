@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit,Output } from '@angular/core';
 import { Data, ProductRequest } from 'src/models/data.model';
 
 @Component({
@@ -11,7 +11,7 @@ export class HomeRightComponent implements OnInit {
   @Input() filterItems!: (category: string) => void;
   productReq: ProductRequest[] = [];
   @Input() filteredData: ProductRequest[][] = [];
-
+  @Output() sideBarOpen = new EventEmitter<boolean>();
   ngOnInit(): void {
     console.log(this.productReq);
     if (!this.filteredData) {
@@ -21,7 +21,9 @@ export class HomeRightComponent implements OnInit {
       this.filterItems('all');
     }
   }
-
+  toggleSideBarOpen() {
+    this.sideBarOpen.emit(!this.sideBarOpen);
+  }
   togglePopUp() {
     this.sortPopUpOpen = !this.sortPopUpOpen;
   }

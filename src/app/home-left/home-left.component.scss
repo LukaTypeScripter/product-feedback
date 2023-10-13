@@ -81,7 +81,20 @@
 .home__right {
    width: 100%;
 }
-
+.color-purple {
+   background-color: var(--purple);
+}
+.color-blue {
+   background-color: var(--blue-light);
+}
+.main__left__intro {
+   svg {
+      display: none;
+   }
+}
+.sidebar {
+   display: none;
+}
 @media (max-width: 950px) {
    .main__container {
       flex-direction: column;
@@ -128,6 +141,11 @@
       display: none;
    }
    .main__left__intro {
+      svg {
+         display: flex;
+      }
+   }
+   .main__left__intro {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -144,5 +162,7 @@
   .main__left__intro__title {
    font-size: 1.2rem;
   }
- 
+  .sidebar {
+   display: flex;
+}
 }

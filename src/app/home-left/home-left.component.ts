@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit {
   datas: Data[] = data;
  filteredData: ProductRequest[][] = [];
  activeCategory: string = 'all';
+ sidebarOpen:boolean = false;
   constructor() {
     this.product = data.map((item) => item.productRequests);
   }
@@ -35,5 +36,7 @@ export class HomeComponent implements OnInit {
     }
     console.log(this.filteredData); 
   }
-  
+  toggleSidebar(event: boolean) {
+    this.sidebarOpen = event;
+  }
 }
