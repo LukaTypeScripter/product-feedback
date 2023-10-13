@@ -9,15 +9,20 @@ import { Data, ProductRequest } from 'src/models/data.model';
 export class HomeRightComponent implements OnInit {
   sortPopUpOpen = false;
   @Input() filterItems!: (category: string) => void;
-  productReq:ProductRequest[] = [];
+  productReq: ProductRequest[] = [];
+  @Input() filteredData: ProductRequest[][] = [];
+
   ngOnInit(): void {
-    // Ensure you use the filterItems function when needed
+    console.log(this.productReq);
+    if (!this.filteredData) {
+      this.filteredData = [];
+    }
     if (this.filterItems) {
-      this.filterItems('all');  // Pass the initial category value
+      this.filterItems('all');
     }
   }
- 
+
   togglePopUp() {
-    this.sortPopUpOpen =!this.sortPopUpOpen;
+    this.sortPopUpOpen = !this.sortPopUpOpen;
   }
 }

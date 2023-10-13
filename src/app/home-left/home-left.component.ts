@@ -1,10 +1,8 @@
 // home-left.component.ts
 
-import { Component, OnInit } from '@angular/core';
-import { of, Observable } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
-import { Data } from 'src/models/data.model';
-import { DataService } from 'src/services/data.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { Data, ProductRequest } from 'src/models/data.model';
+import { data } from '../data';
 
 @Component({
   selector: 'home-left',
@@ -13,52 +11,27 @@ import { DataService } from 'src/services/data.service';
 })
 export class HomeComponent implements OnInit {
   categories: string[] = ["all", "UI", "UX", "enhancement", "feature", "Bug"];
-  data: Data[] = [];
-
-  constructor(private dataService: DataService) {}
-
+  product: ProductRequest[][] = data.map((item) => item.productRequests);
+  datas: Data[] = data;
+ filteredData: ProductRequest[][] = [];
+  constructor() {
+    this.product = data.map((item) => item.productRequests);
+  }
   ngOnInit() {
-    this.loadData();
+    
+
   }
 
   filterItems(category: string): void {
-    if (category === 'all') {
-      this.loadData();
+    console.log(category);
+    if (category.toLowerCase() === 'all') {
+      this.filteredData = this.product;
     } else {
-      this.handleData(category).subscribe(
-        (filteredResult) => {
-          this.data = filteredResult;
-        },
-        (error) => {
-          console.error('Error fetching data:', error);
-        }
+      this.filteredData = this.product.map((item: ProductRequest[]) =>
+        item.filter((request: ProductRequest) => request.category.toLowerCase() === category.toLowerCase())
       );
     }
+    console.log(this.filteredData); 
   }
-
-  private loadData(): void {
-    this.dataService.getData().subscribe(
-      (result) => {
-        this.data = result;
-      },
-      (error) => {
-        console.error('Error fetching data:', error);
-      }
-    );
-  }
-
-  private handleData(category: string): Observable<Data[]> {
-    return this.dataService.getData().pipe(
-      switchMap((result: unknown) => {
-        if (Array.isArray(result)) {
-          const filteredData = (result as Data[]).filter((data: Data) =>
-            data.productRequests.some(item => item.category === category)
-          );
-          return of(filteredData);
-        } else {
-          return of([]); // or any other appropriate default value
-        }
-      })
-    );
-  }
+  
 }

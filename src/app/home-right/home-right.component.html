@@ -15,9 +15,9 @@
     <button class="btn bg__color">+ Add Feedbaack</button>
 </nav>
 
-<ul class="suggestions">
-    <li>
-        <div class="suggestion__card" *ngFor="let comments of productReq">
+<ul class="suggestions" *ngIf="filteredData">
+    <li *ngFor="let productRequests of filteredData" >
+        <div class="suggestion__card" *ngFor="let comments of productRequests">
             <button class="upvote-btn desktop">
                 <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg"><path d="M1 6l4-4 4 4" stroke="#4661E6" stroke-width="2" fill="none" fill-rule="evenodd"/></svg>
                 <b class="body-xs">3</b>
