@@ -7,12 +7,14 @@ import { HomeComponent } from './home-left/home-left.component';
 import { HomeRightComponent } from './home-right/home-right.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PopupSortComponent } from './home-right/popup-sort/popup-sort.component';
+import { FeedbackComponent } from './home-right/feedback/feedback.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     HomeRightComponent,
     PopupSortComponent,
+    FeedbackComponent,
   ],
   imports: [
     BrowserModule,

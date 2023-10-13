@@ -13,7 +13,7 @@ export class HomeRightComponent implements OnInit {
   @Input() filteredData: ProductRequest[][] = [];
   @Output() sideBarOpen = new EventEmitter<boolean>();
   ngOnInit(): void {
-    console.log(this.productReq);
+
     if (!this.filteredData) {
       this.filteredData = [];
     }

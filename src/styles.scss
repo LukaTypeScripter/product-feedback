@@ -119,3 +119,21 @@ button{
     line-height: 19px;
     line-height: var(--body-xs-lh);
 }
+@media (max-width: 760px) {
+    :root {
+        --h1: 1.125rem;
+        --h1-lh: 26px;
+        --h1-ls: -0.25px;
+        --h2: 0.938rem;
+        --h2-lh: 22px;
+        --h2-ls: -0.19px;
+        --h3: 0.813rem;
+        --h3-lh: 19px;
+        --h3-ls: -0.18px;
+        --h4: 0.813rem;
+        --body: 0.813rem;
+        --body-lh: 19px;
+        --body-s: 0.813rem;
+        --body-s-lh: 19px;
+    }
+}
