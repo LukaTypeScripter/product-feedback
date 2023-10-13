@@ -10,7 +10,7 @@
         </div>
         <ul class="main__left__fillter">
             <li *ngFor="let category of categories">
-                <button class="body-s tab" (click)="filterItems(category)">{{ category }}</button>
+                <button class="body-s tab" (click)="filterItems(category)"  [ngClass]="{ 'active': category === activeCategory }" >{{ category }}</button>
             </li>
         </ul>
         <div class="main__left__roadmap">

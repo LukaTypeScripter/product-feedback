@@ -14,16 +14,18 @@ export class HomeComponent implements OnInit {
   product: ProductRequest[][] = data.map((item) => item.productRequests);
   datas: Data[] = data;
  filteredData: ProductRequest[][] = [];
+ activeCategory: string = 'all';
   constructor() {
     this.product = data.map((item) => item.productRequests);
   }
+ 
   ngOnInit() {
     
 
   }
 
   filterItems(category: string): void {
-    console.log(category);
+    this.activeCategory = category;
     if (category.toLowerCase() === 'all') {
       this.filteredData = this.product;
     } else {

@@ -50,6 +50,10 @@
    background-color: #fff;
  }
 }
+.active {
+    background-color: var(--purple);
+    color: #fff;
+}
 .status {
    li {
       display: flex;
