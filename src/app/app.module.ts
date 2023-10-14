@@ -8,6 +8,7 @@ import { HomeRightComponent } from './home-right/home-right.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PopupSortComponent } from './home-right/popup-sort/popup-sort.component';
 import { FeedbackComponent } from './home-right/feedback/feedback.component';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,7 +20,8 @@ import { FeedbackComponent } from './home-right/feedback/feedback.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

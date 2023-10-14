@@ -1,6 +1,6 @@
-// home-left.component.ts
-
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Data, ProductRequest } from 'src/models/data.model';
 import { data } from '../data';
 
@@ -11,32 +11,50 @@ import { data } from '../data';
 })
 export class HomeComponent implements OnInit {
   categories: string[] = ["all", "UI", "UX", "enhancement", "feature", "Bug"];
-  product: ProductRequest[][] = data.map((item) => item.productRequests);
-  datas: Data[] = data;
- filteredData: ProductRequest[][] = [];
- activeCategory: string = 'all';
- sidebarOpen:boolean = false;
+  private dataSubject = new BehaviorSubject<Data[]>([]);
+  private activeCategorySubject = new BehaviorSubject<string>('all');
+  private sidebarOpenSubject = new BehaviorSubject<boolean>(false);
+
+  // Observable properties
+  datas$ = this.dataSubject.asObservable();
+  activeCategory$ = this.activeCategorySubject.asObservable();
+  sidebarOpen$ = this.sidebarOpenSubject.asObservable();
+
+  // Computed observable for filteredData
+  filteredData$ = this.dataSubject.pipe(
+    map((data: Data[]) => {
+      const activeCategory = this.activeCategorySubject.value;
+      if (activeCategory.toLowerCase() === 'all') {
+        return data.map((item) => item.productRequests);
+      } else {
+        return data.map((item) =>
+          item.productRequests.filter((request: ProductRequest) =>
+            request.category.toLowerCase() === activeCategory.toLowerCase()
+          )
+        );
+      }
+    })
+    
+  );
+
   constructor() {
-    this.product = data.map((item) => item.productRequests);
+    this.dataSubject.next(data);
+    console.log(this.filteredData$);
+    
   }
- 
+
   ngOnInit() {
-
-
+    console.log('Initial Data:', this.dataSubject.value,this.filteredData$);
+    this.filteredData$.subscribe(filteredData => {
+      console.log('Filtered Data:', filteredData);
+    });
   }
 
   filterItems(category: string): void {
-    this.activeCategory = category;
-    if (category.toLowerCase() === 'all') {
-      this.filteredData = this.product;
-    } else {
-      this.filteredData = this.product.map((item: ProductRequest[]) =>
-        item.filter((request: ProductRequest) => request.category.toLowerCase() === category.toLowerCase())
-      );
-    }
-    console.log(this.filteredData); 
+    this.activeCategorySubject.next(category);
   }
+
   toggleSidebar(event: boolean) {
-    this.sidebarOpen = event;
+    this.sidebarOpenSubject.next(event);
   }
 }

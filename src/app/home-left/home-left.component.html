@@ -1,9 +1,9 @@
-<div class="sidebar" *ngIf="sidebarOpen">
+<div class="sidebar" *ngIf="sidebarOpen$">
     <div class="overlay"></div>
     <div class="content">
     <ul class="main__left__filter__sidebar">
         <li *ngFor="let category of categories">
-            <button class="body-s tab" (click)="filterItems(category)"  [ngClass]="{ 'active': category === activeCategory }" >{{ category }}</button>
+            <button class="body-s tab" (click)="filterItems(category)"  [ngClass]="{ 'active': (activeCategory$ | async) === category }" >{{ category }}</button>
         </li>
     </ul>
     <div class="main__left__roadmap__sidebar">
@@ -45,12 +45,12 @@
                 <h1 class="main__left__intro__title">Frontend Mentor</h1>
                 <p class="body-s main__left__intro__subtitle">Feedback board</p>
             </div>
-            <svg (click)="sidebarOpen = !sidebarOpen" *ngIf="!sidebarOpen" width="20" height="17" xmlns="http://www.w3.org/2000/svg"><g fill="#FFF" fill-rule="evenodd"><path d="M0 0h20v3H0zM0 7h20v3H0zM0 14h20v3H0z"/></g></svg>
-            <svg width="18" (click)="sidebarOpen = !sidebarOpen" *ngIf="sidebarOpen" height="17" xmlns="http://www.w3.org/2000/svg"><path d="M15.01.368l2.122 2.122-6.01 6.01 6.01 6.01-2.122 2.122L9 10.622l-6.01 6.01L.868 14.51 6.88 8.5.87 2.49 2.988.368 9 6.38 15.01.37z" fill="#FFF" fill-rule="evenodd"/></svg>
+            <svg (click)="sidebarOpen$" *ngIf="!sidebarOpen$" width="20" height="17" xmlns="http://www.w3.org/2000/svg"><g fill="#FFF" fill-rule="evenodd"><path d="M0 0h20v3H0zM0 7h20v3H0zM0 14h20v3H0z"/></g></svg>
+            <svg width="18" (click)=" !sidebarOpen$" *ngIf="sidebarOpen$" height="17" xmlns="http://www.w3.org/2000/svg"><path d="M15.01.368l2.122 2.122-6.01 6.01 6.01 6.01-2.122 2.122L9 10.622l-6.01 6.01L.868 14.51 6.88 8.5.87 2.49 2.988.368 9 6.38 15.01.37z" fill="#FFF" fill-rule="evenodd"/></svg>
         </div>
         <ul class="main__left__fillter">
             <li *ngFor="let category of categories">
-                <button class="body-s tab" (click)="filterItems(category)"  [ngClass]="{ 'active': category === activeCategory }" >{{ category }}</button>
+                <button class="body-s tab" (click)="filterItems(category)"  [ngClass]="{ 'active': (activeCategory$ | async) === category }" >{{ category }}</button>
             </li>
         </ul>
         <div class="main__left__roadmap">
@@ -84,7 +84,7 @@
         </div>
     </section>
     <div class="home__right">
-        <app-home-right [filterItems]="filterItems" [filteredData]="filteredData" (sideBarOpen)="toggleSidebar($event)"></app-home-right>
+        <app-home-right [filterItems]="filterItems" [filteredData]="(filteredData$ | async) || []" (sideBarOpen)="toggleSidebar($event)"></app-home-right>
     </div>
    
     </div>
