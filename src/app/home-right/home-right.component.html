@@ -15,7 +15,7 @@
     <button class="btn bg__color">+ Add Feedbaack</button>
 </nav>
 
-<ul class="suggestions" *ngIf="filteredData && filteredData.length > 0">
+<ul class="suggestions" *ngIf="filteredData && filteredData.length > 0;">
     <li *ngFor="let productRequests of filteredData" >
         <div class="suggestion__card" *ngFor="let comments of productRequests">
             <button class="upvote-btn desktop">
@@ -41,7 +41,7 @@
     </li>
     
 </ul>
-<!-- <ng-template #noSuggestionsBlock>
-<app-feedback ></app-feedback>
-</ng-template> -->
+
+<app-feedback *ngIf="filteredData && filteredData[0]?.length === 0"></app-feedback>
+
 

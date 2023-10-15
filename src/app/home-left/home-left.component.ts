@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Data, ProductRequest } from 'src/models/data.model';
 import { data } from '../data';
@@ -20,31 +20,31 @@ export class HomeComponent implements OnInit {
   activeCategory$ = this.activeCategorySubject.asObservable();
   sidebarOpen$ = this.sidebarOpenSubject.asObservable();
 
-  // Computed observable for filteredData
-  filteredData$ = this.dataSubject.pipe(
-    map((data: Data[]) => {
-      const activeCategory = this.activeCategorySubject.value;
+  // Computed observable for filteredData using combineLatest
+  filteredData$: Observable<ProductRequest[][]> = combineLatest([
+    this.datas$,
+    this.activeCategory$
+  ]).pipe(
+    map(([data, activeCategory]) => {
       if (activeCategory.toLowerCase() === 'all') {
         return data.map((item) => item.productRequests);
       } else {
-        return data.map((item) =>
-          item.productRequests.filter((request: ProductRequest) =>
-            request.category.toLowerCase() === activeCategory.toLowerCase()
-          )
-        );
+        return data
+          .map((item) =>
+            item.productRequests.filter((request: ProductRequest) =>
+              request.category.toLowerCase() === activeCategory.toLowerCase()
+            )
+          );
       }
     })
-    
   );
 
   constructor() {
     this.dataSubject.next(data);
-    console.log(this.filteredData$);
-    
+    this.activeCategorySubject.next('all');
   }
 
   ngOnInit() {
-    console.log('Initial Data:', this.dataSubject.value,this.filteredData$);
     this.filteredData$.subscribe(filteredData => {
       console.log('Filtered Data:', filteredData);
     });
