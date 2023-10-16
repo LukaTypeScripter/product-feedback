@@ -10,13 +10,13 @@ export class HomeRightComponent implements OnInit {
   sortPopUpOpen = false;
   productReq: ProductRequest[] = [];
   @Input() filteredData: ProductRequest[][] = [];
-  @Output() sideBarOpen = new EventEmitter<boolean>();
+ @Input() sideBarOpen:boolean = false
 
   ngOnInit(): void {
+    console.log(this.sideBarOpen);
+    
   }
-  toggleSideBarOpen() {
-    this.sideBarOpen.emit(!this.sideBarOpen);
-  }
+
 
   togglePopUp() {
     this.sortPopUpOpen = !this.sortPopUpOpen;

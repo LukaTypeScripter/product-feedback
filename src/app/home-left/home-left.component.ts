@@ -13,12 +13,11 @@ export class HomeComponent implements OnInit {
   categories: string[] = ["all", "UI", "UX", "enhancement", "feature", "Bug"];
   private dataSubject = new BehaviorSubject<Data[]>([]);
   private activeCategorySubject = new BehaviorSubject<string>('all');
-  private sidebarOpenSubject = new BehaviorSubject<boolean>(false);
+ sidebarOpen:boolean  = false;
 
   // Observable properties
   datas$ = this.dataSubject.asObservable();
   activeCategory$ = this.activeCategorySubject.asObservable();
-  sidebarOpen$ = this.sidebarOpenSubject.asObservable();
 
   // Computed observable for filteredData using combineLatest
   filteredData$: Observable<ProductRequest[][]> = combineLatest([
@@ -54,7 +53,7 @@ export class HomeComponent implements OnInit {
     this.activeCategorySubject.next(category);
   }
 
-  toggleSidebar(event: boolean) {
-    this.sidebarOpenSubject.next(event);
+  toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
   }
 }
