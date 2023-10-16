@@ -9,10 +9,10 @@
                 <span>Most Upvotes</span>
                 <svg  width="10" height="7" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4 4 4-4" stroke="#fff" stroke-width="2" fill="none" fill-rule="evenodd"/></svg>
             </button>
-            <app-popup-sort *ngIf="sortPopUpOpen"></app-popup-sort>
+            <app-popup-sort [filteredData]="filteredData" *ngIf="sortPopUpOpen"></app-popup-sort>
         </div>
     </div>
-    <button class="btn bg__color">+ Add Feedbaack</button>
+    <app-button></app-button>
 </nav>
 
 <ul class="suggestions" *ngIf="filteredData && filteredData.length > 0;">
