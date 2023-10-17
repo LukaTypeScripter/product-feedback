@@ -12,37 +12,12 @@ import { DataService } from 'src/services/data.service';
 })
 export class HomeComponent implements OnInit {
   categories: string[] = ["all", "UI", "UX", "enhancement", "feature", "Bug"];
-  private dataSubject = new BehaviorSubject<Data[]>([]);
-  private activeCategorySubject = new BehaviorSubject<string>('all');
-  private sidebarOpenSubject = new BehaviorSubject<boolean>(false);
-
-  // Observable properties
-  datas$ = this.dataSubject.asObservable();
-  activeCategory$ = this.activeCategorySubject.asObservable();
-  sidebarOpen$ = this.sidebarOpenSubject.asObservable();
-
-  // Computed observable for filteredData using combineLatest
-  filteredData$: Observable<ProductRequest[][]> = combineLatest([
-    this.datas$,
-    this.activeCategory$
-  ]).pipe(
-    map(([data, activeCategory]) => {
-      if (activeCategory.toLowerCase() === 'all') {
-        return data.map((item) => item.productRequests);
-      } else {
-        return data
-          .map((item) =>
-            item.productRequests.filter((request: ProductRequest) =>
-              request.category.toLowerCase() === activeCategory.toLowerCase()
-            )
-          );
-      }
-    })
-  );
-
-  constructor() {
-    this.dataSubject.next(data);
-    this.activeCategorySubject.next('all');
+  sidebarOpen: boolean = false;
+  filteredData$: Observable<ProductRequest[][]>;
+  sidebarOpen$!: Observable<boolean>;
+  activeCategory$!: Observable<string>;
+  constructor(private dataService: DataService) {
+    this.filteredData$ = this.dataService.getFilteredData$();
   }
 
   ngOnInit() {
@@ -50,7 +25,6 @@ export class HomeComponent implements OnInit {
     this.filteredData$.subscribe(filteredData => {
       console.log('Filtered Data:', filteredData);
     });
-    this.sidebarOpen$ = this.dataService.sidebarOpen$;
     this.activeCategory$ = this.dataService.activeCategory$;
   }
 
@@ -58,7 +32,8 @@ filterItems(category: string): void {
   this.dataService.setActiveCategory(category);
 }
 
-  toggleSidebar(event: boolean) {
-    this.sidebarOpenSubject.next(event);
+  toggleSidebar() {
+    this.sidebarOpen = !this.sidebarOpen;
   }
+
 }

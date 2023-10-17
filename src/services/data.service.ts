@@ -11,12 +11,17 @@ export class DataService {
  
   private dataSubject = new BehaviorSubject<Data[]>([]);
   private activeCategorySubject = new BehaviorSubject<string>('all');
-  private sidebarOpenSubject = new BehaviorSubject<boolean>(false);
+ 
   datas$ = this.dataSubject.asObservable();
   activeCategory$ = this.activeCategorySubject.asObservable();
-  sidebarOpen$ = this.sidebarOpenSubject.asObservable();
   // Add other methods and observables as needed
+  // New BehaviorSubjects for filter criteria
+  public upvotesFilterSubject = new BehaviorSubject<boolean>(false);
+  public commentsFilterSubject = new BehaviorSubject<boolean>(false);
 
+   // New Observables for filter criteria
+   upvotesFilter$ = this.upvotesFilterSubject.asObservable();
+   commentsFilter$ = this.commentsFilterSubject.asObservable();
   constructor() {
     this.dataSubject.next(data);
     this.activeCategorySubject.next('all');
@@ -24,7 +29,8 @@ export class DataService {
 
   // Move the combineLatest logic to a method in this service
   getFilteredData$(): Observable<ProductRequest[][]> {
-    return combineLatest([this.datas$, this.activeCategory$]).pipe(
+    return combineLatest([this.datas$, this.activeCategory$,  this.upvotesFilter$,
+      this.commentsFilter$]).pipe(
       map(([data, activeCategory]) => {
         if (activeCategory.toLowerCase() === 'all') {
           return data.map((item) => item.productRequests);
@@ -41,9 +47,5 @@ export class DataService {
   }
   setActiveCategory(category: string): void {
     this.activeCategorySubject.next(category);
-  }
-
-  toggleSidebar(event: boolean): void {
-    this.sidebarOpenSubject.next(event);
   }
 }

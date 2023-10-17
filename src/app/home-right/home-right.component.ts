@@ -25,4 +25,5 @@ export class HomeRightComponent implements OnInit {
   updateFilteredData(data: ProductRequest[][]): void {
     this.filteredData = data;
   }
+  
 }
