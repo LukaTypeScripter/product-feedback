@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PopupSortComponent } from './home-right/popup-sort/popup-sort.component';
 import { FeedbackComponent } from './home-right/feedback/feedback.component';
 import { FormsModule } from '@angular/forms';
+import { ButtonComponent } from './button/button.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,6 +17,7 @@ import { FormsModule } from '@angular/forms';
     HomeRightComponent,
     PopupSortComponent,
     FeedbackComponent,
+    ButtonComponent,
   ],
   imports: [
     BrowserModule,
