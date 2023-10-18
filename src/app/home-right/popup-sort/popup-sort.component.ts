@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ProductRequest } from 'src/models/data.model';
 import { DataService } from 'src/services/data.service';
 
@@ -10,6 +10,7 @@ import { DataService } from 'src/services/data.service';
 export class PopupSortComponent implements OnInit {
   @Input() filteredData: ProductRequest[][] = [];
   fillteItems:string[] = ["Most Upvotes",'Least Upvotes','Most Comments','Least Comments']
+  @Output() sortItems = new EventEmitter()
     ngOnInit(): void {
       console.log("wada",this.filteredData);
     }
@@ -17,6 +18,7 @@ export class PopupSortComponent implements OnInit {
     }
 
     sortData(sortBy: string): void {
+      this.sortItems.emit(sortBy)
       this.filteredData = this.dataService.sortData(this.filteredData, sortBy);
     }
   

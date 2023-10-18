@@ -6,10 +6,10 @@
         <div class="home__right__nav__dropdown__outer">
             <button class="home__right__nav__dropdown__btn" (click)="togglePopUp()" >
                 Sort By:
-                <span>Most Upvotes</span>
+                <span>{{sortCategory ? sortCategory : "Most Upvotes"}}</span>
                 <svg  width="10" height="7" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l4 4 4-4" stroke="#fff" stroke-width="2" fill="none" fill-rule="evenodd"/></svg>
             </button>
-            <app-popup-sort [filteredData]="filteredData" *ngIf="sortPopUpOpen"></app-popup-sort>
+            <app-popup-sort (sortItems)="getSortedList($event)" [filteredData]="filteredData" *ngIf="sortPopUpOpen"></app-popup-sort>
         </div>
     </div>
     <app-button></app-button>

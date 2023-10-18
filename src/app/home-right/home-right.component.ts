@@ -11,12 +11,14 @@ export class HomeRightComponent implements OnInit {
   productReq: ProductRequest[] = [];
   @Input() filteredData: ProductRequest[][] = [];
  @Input() sideBarOpen:boolean = false
-
+  sortCategory:string = ''
   ngOnInit(): void {
     console.log(this.sideBarOpen);
     
   }
-
+getSortedList (event:any) {
+this.sortCategory = event
+}
 
   togglePopUp() {
     this.sortPopUpOpen = !this.sortPopUpOpen;
