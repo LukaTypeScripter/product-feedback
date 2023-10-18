@@ -9,7 +9,7 @@ import { data } from 'src/app/data';
 })
 export class DataService {
  
-  private dataSubject = new BehaviorSubject<Data[]>([]);
+  public dataSubject = new BehaviorSubject<Data[]>([]);
   private activeCategorySubject = new BehaviorSubject<string>('all');
  
   datas$ = this.dataSubject.asObservable();
@@ -44,6 +44,21 @@ export class DataService {
         }
       })
     );
+  }
+  //for comments filltring
+  sortData(data: ProductRequest[][], sortBy: string): ProductRequest[][] {
+    switch (sortBy) {
+      case 'Most Comments':
+        return data.map(innerArray => innerArray.sort((a, b) => (a.comments.length < b.comments.length ? 1 : -1)));
+      case 'Most Upvotes':
+        return data.map(innerArray => innerArray.sort((a, b) => (a.upvotes < b.upvotes ? 1 : -1)));
+      case 'Least Upvotes':
+        return data.map(innerArray => innerArray.sort((a, b) => (a.upvotes > b.upvotes ? 1 : -1)));
+      case 'Least Comments':
+        return data.map(innerArray => innerArray.sort((a, b) => (a.comments.length > b.comments.length ? 1 : -1)));
+      default:
+        return data;
+    }
   }
   setActiveCategory(category: string): void {
     this.activeCategorySubject.next(category);
