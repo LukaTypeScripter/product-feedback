@@ -10,6 +10,7 @@ import { PopupSortComponent } from './home-right/popup-sort/popup-sort.component
 import { FeedbackComponent } from './home-right/feedback/feedback.component';
 import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from './button/button.component';
+import { RoadmapComponent } from './roadmap/roadmap.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,6 +19,7 @@ import { ButtonComponent } from './button/button.component';
     PopupSortComponent,
     FeedbackComponent,
     ButtonComponent,
+    RoadmapComponent,
   ],
   imports: [
     BrowserModule,

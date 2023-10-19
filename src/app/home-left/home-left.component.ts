@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Component, OnInit,OnDestroy } from '@angular/core';
+import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
+import { map, takeUntil } from 'rxjs/operators';
 import { Data, ProductRequest } from 'src/models/data.model';
 import { data } from '../data';
 import { DataService } from 'src/services/data.service';
@@ -10,12 +10,13 @@ import { DataService } from 'src/services/data.service';
   templateUrl: './home-left.component.html',
   styleUrls: ['./home-left.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit,OnDestroy {
   categories: string[] = ["all", "UI", "UX", "enhancement", "feature", "Bug"];
   sidebarOpen: boolean = false;
   filteredData$: Observable<ProductRequest[][]>;
   sidebarOpen$!: Observable<boolean>;
   activeCategory$!: Observable<string>;
+  private destroy$ = new Subject<void>();
   constructor(private dataService: DataService) {
     this.filteredData$ = this.dataService.getFilteredData$();
   }
@@ -23,7 +24,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.filteredData$ = this.dataService.getFilteredData$();
     this.filteredData$.subscribe(filteredData => {
-      console.log('Filtered Data:', filteredData);
+      takeUntil(this.destroy$)
     });
     this.activeCategory$ = this.dataService.activeCategory$;
   }
@@ -35,5 +36,8 @@ filterItems(category: string): void {
   toggleSidebar() {
     this.sidebarOpen = !this.sidebarOpen;
   }
-
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 }
