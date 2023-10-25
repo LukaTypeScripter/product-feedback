@@ -6,16 +6,19 @@
     max-width: var(--max-width);
     margin: 0 auto;
 }
+
 .roadmap__status__container {
     display: flex;
     justify-content: center;
     align-items: flex-start;
-gap: 30px;
+    gap: 30px;
 }
+
 .status__list__header {
     margin-bottom: 32px;
-    }
-    .description {
-        margin-top: 4px;
-        color: var(--grey-dark);
-    }
+}
+
+.description {
+    margin-top: 4px;
+    color: var(--grey-dark);
+}

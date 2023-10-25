@@ -14,12 +14,9 @@ export class DataService {
  
   datas$ = this.dataSubject.asObservable();
   activeCategory$ = this.activeCategorySubject.asObservable();
-  // Add other methods and observables as needed
-  // New BehaviorSubjects for filter criteria
+
   public upvotesFilterSubject = new BehaviorSubject<boolean>(false);
   public commentsFilterSubject = new BehaviorSubject<boolean>(false);
-
-   // New Observables for filter criteria
    upvotesFilter$ = this.upvotesFilterSubject.asObservable();
    commentsFilter$ = this.commentsFilterSubject.asObservable();
   constructor() {
@@ -62,5 +59,11 @@ export class DataService {
   }
   setActiveCategory(category: string): void {
     this.activeCategorySubject.next(category);
+  }
+  filterByStatus(data: Data[], statuses: string[]): Data[] {
+    return data.map(item => ({
+      ...item,
+      productRequests: item.productRequests.filter(request => statuses.includes(request.status.toLowerCase()))
+    }));
   }
 }
