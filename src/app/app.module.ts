@@ -11,6 +11,8 @@ import { FeedbackComponent } from './home-right/feedback/feedback.component';
 import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from './button/button.component';
 import { RoadmapComponent } from './roadmap/roadmap.component';
+import { RoadmapHeaderComponent } from './roadmap/roadmap-header/roadmap-header.component';
+import { StatusCardComponent } from './roadmap/status-card/status-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +22,8 @@ import { RoadmapComponent } from './roadmap/roadmap.component';
     FeedbackComponent,
     ButtonComponent,
     RoadmapComponent,
+    RoadmapHeaderComponent,
+    StatusCardComponent,
   ],
   imports: [
     BrowserModule,

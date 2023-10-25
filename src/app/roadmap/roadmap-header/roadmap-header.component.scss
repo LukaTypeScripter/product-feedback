@@ -1,0 +1,18 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--grey-darkest);
+    margin-bottom: 48px;
+    border-radius: 10px;
+    padding: 27px 32px;
+    width: 100%;
+    h1 {
+        color: white;
+        margin-top: 5px;
+    }
+    button {
+        color: white;
+        cursor: pointer;
+    }
+}

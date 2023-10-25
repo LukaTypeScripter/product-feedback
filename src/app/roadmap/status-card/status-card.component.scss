@@ -1,0 +1,56 @@
+
+    .status__card {
+        display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 5px;
+    padding: 31px;
+    width: 100%;
+    }
+    .status__indicator {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .comments__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-top: 16px;
+    }
+    .upvote__btn {
+        transition: all .2s ease-in-out;
+        align-self: flex-start;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+        background-color: var(--grey);
+        border-radius: 10px;
+        padding: 12px;
+        width: 40px;
+        svg {
+            margin-right:5px ;
+        }
+    }
+    .hor {
+        padding: 7px 14px;
+        flex-direction: row;
+        width: auto;
+    }
+    
+    .comments__count {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+    
+    .main__text {
+        color: var(--grey-dark);
+        margin: 4px 0 16px;
+    }
