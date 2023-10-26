@@ -13,12 +13,11 @@ export class RoadmapComponent implements OnInit {
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    // Assuming you have a default status filter, modify this accordingly
     this.productRequests = this.dataService
     .filterByStatus(this.dataService.dataSubject.value, ['planned', 'live', 'in-progress'])
     .flatMap((data) => data.productRequests);
     console.log(this.productRequests);
-    
+
   }
 
 
