@@ -9,6 +9,6 @@ import { ProductRequest } from 'src/models/data.model';
 export class StatusCardComponent implements OnInit {
   @Input() planned: ProductRequest | undefined;
   ngOnInit(): void {
-    console.log(this.planned)
+
   }
 }

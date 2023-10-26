@@ -4,7 +4,7 @@
         <div class="roadmap__status__container" >
             <div >
                 <div class="status__list__header" >
-                    <h3> planned (3)</h3>
+                    <h3> planned ({{ getNumberOfStatus('planned') }})</h3>
                     <p class="body description">Ideas prioritized for research</p>
                 </div>
                 <ng-container *ngFor="let planned of productRequests">
@@ -15,7 +15,7 @@
 
             <div >
                 <div class="status__list__header" >
-                    <h3>in-progress (3)</h3>
+                    <h3>in-progress ({{ getNumberOfStatus('in-progress') }})</h3>
                     <p class="body description">Ideas prioritized for research</p>
                 </div>
                 <ng-container *ngFor="let planned of productRequests">
@@ -24,7 +24,7 @@
             </div>
             <div >
                 <div class="status__list__header" >
-                    <h3>live (3)</h3>
+                    <h3>live ({{ getNumberOfStatus('live') }})</h3>
                     <p class="body description">Ideas prioritized for research</p>
                 </div>
                 <ng-container *ngFor="let planned of productRequests">

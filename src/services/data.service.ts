@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable, combineLatest, map, of } from 'rxjs';
+import { BehaviorSubject, Observable, combineLatest, filter, map, mergeMap, of, reduce, toArray } from 'rxjs';
 import { Data, ProductRequest } from 'src/models/data.model';
 import { data } from 'src/app/data';
 
@@ -65,5 +65,15 @@ export class DataService {
       ...item,
       productRequests: item.productRequests.filter(request => statuses.includes(request.status.toLowerCase()))
     }));
+  }
+
+  getStatusCount(status: string): Observable<number> {
+    return this.getFilteredData$().pipe(
+      mergeMap((item) => item), // Flatten the array of arrays
+      mergeMap((productRequests) => productRequests),
+      filter((product) => product.status === status),
+      map(() => 1), // Map each element to 1
+      reduce((count, _) => count + 1, 0) // Sum the counts
+    );
   }
 }
