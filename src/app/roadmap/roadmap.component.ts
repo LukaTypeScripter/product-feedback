@@ -10,19 +10,14 @@ import { DataService } from 'src/services/data.service';
 })
 export class RoadmapComponent implements OnInit {
   productRequests: ProductRequest[] = [];
-  @Output() getStatus = new EventEmitter<{ status: string, count: number }>();
   constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.productRequests = this.dataService
-    .filterByStatus(this.dataService.dataSubject.value, ['planned', 'live', 'in-progress'])
-    .flatMap((data) => data.productRequests);
+      this.productRequests = this.dataService.productRequests
   }
 
-  getFillteredPoductData(status:string) {
-    return this.productRequests.filter((product) => product.status === status);
-  }
+
   getNumberOfStatus(status:string) {
-    return this.getFillteredPoductData(status).length;
+    return this.dataService.getNumberOfStatus(status,this.productRequests)
   }
 }

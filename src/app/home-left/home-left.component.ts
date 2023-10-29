@@ -36,8 +36,12 @@ filterItems(category: string): void {
   toggleSidebar() {
     this.sidebarOpen = !this.sidebarOpen;
   }
+  getNumberOfStatus(status:string) {
+    return this.dataService.getNumberOfStatus(status,this.dataService.productRequests)
+  }
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
   }
+
 }

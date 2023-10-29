@@ -49,7 +49,7 @@
                 <svg  *ngIf="!sidebarOpen" width="20" height="17" xmlns="http://www.w3.org/2000/svg"><g fill="#FFF" fill-rule="evenodd"><path d="M0 0h20v3H0zM0 7h20v3H0zM0 14h20v3H0z"/></g></svg>
                 <svg width="18" *ngIf="sidebarOpen" height="17" xmlns="http://www.w3.org/2000/svg"><path d="M15.01.368l2.122 2.122-6.01 6.01 6.01 6.01-2.122 2.122L9 10.622l-6.01 6.01L.868 14.51 6.88 8.5.87 2.49 2.988.368 9 6.38 15.01.37z" fill="#FFF" fill-rule="evenodd"/></svg>
             </div>
-           
+
         </div>
         <ul class="main__left__fillter">
             <li *ngFor="let category of categories">
@@ -67,31 +67,31 @@
                         <div class="circle"></div>
                         <div class="status">Planned</div>
                     </div>
-                    <p class="body status__counter">2</p>
+                    <p class="body status__counter">{{ getNumberOfStatus('planned') }}</p>
                 </li>
                 <li>
                     <div class="status__indicator ">
                         <div class="circle color-purple"></div>
                         <div class="status">In-Progress</div>
                     </div>
-                    <p class="body status__counter">3</p>
+                    <p class="body status__counter">{{ getNumberOfStatus('in-progress') }}</p>
                 </li>
                 <li>
                     <div class="status__indicator ">
                         <div class="circle color-blue"></div>
                         <div class="status">Live</div>
                     </div>
-                    <p class="body status__counter">1</p>
+                    <p class="body status__counter">{{ getNumberOfStatus('live') }}</p>
                 </li>
             </ul>
         </div>
     </section>
     <div class="home__right">
-        <app-home-right [filteredData]="(filteredData$ | async) || []" (sideBarOpen)="toggleSidebar()"></app-home-right>
+        <app-home-right [filteredData]="(filteredData$ | async) || []" ></app-home-right>
     </div>
-   
+
     </div>
- 
+
 </div>
 
 
