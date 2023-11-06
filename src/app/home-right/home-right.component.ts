@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Data, ProductRequest } from 'src/models/data.model';
+import { DataService } from 'src/services/data.service';
 
 @Component({
   selector: 'app-home-right',
@@ -16,6 +17,8 @@ export class HomeRightComponent implements OnInit {
     console.log(this.sideBarOpen);
     
   }
+  constructor(private dataService: DataService) {
+  }
 getSortedList (event:any) {
 this.sortCategory = event
 }
@@ -27,5 +30,10 @@ this.sortCategory = event
   updateFilteredData(data: ProductRequest[][]): void {
     this.filteredData = data;
   }
-  
+  upVoteOnClick(productId: number): void {
+    this.dataService.toggleUpvotes(productId);
+
+    // Update your filteredData with the new upvotes, you may not need this step if your view automatically updates
+    // from the datas$ observable in DataService.
+  }
 }

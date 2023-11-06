@@ -8,6 +8,15 @@
     padding: 31px;
     width: 100%;
     }
+    .status__card.blue__border {
+        border-top: 6px solid var(--blue-light);
+    }
+    .status__card.orange__border {
+        border-top: 6px solid var(--orange);
+    }
+    .status__card.purple__border {
+        border-top: 6px solid var(--purple);
+    }
     .status__indicator {
         display: flex;
         justify-content: center;

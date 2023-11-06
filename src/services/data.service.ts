@@ -66,14 +66,24 @@ export class DataService {
       productRequests: item.productRequests.filter(request => statuses.includes(request.status.toLowerCase()))
     }));
   }
-
-  getStatusCount(status: string): Observable<number> {
-    return this.getFilteredData$().pipe(
-      mergeMap((item) => item), // Flatten the array of arrays
-      mergeMap((productRequests) => productRequests),
-      filter((product) => product.status === status),
-      map(() => 1), // Map each element to 1
-      reduce((count, _) => count + 1, 0) // Sum the counts
-    );
+  toggleUpvotes(productId:number):void {
+    const updatedData = this.dataSubject.getValue().map((data) => {
+      const updatedProductsRequests = data.productRequests.map((req) => {
+        if(req.id === productId) {
+          if(req.upvoted) {
+            req.upvotes--;
+          }else {
+            req.upvotes++;
+          }
+          req.upvoted = !req.upvoted
+        }
+        return req
+      })
+      return {
+        ...data,
+        productRequests: updatedProductsRequests
+      }
+    })
+    this.dataSubject.next(updatedData);
   }
 }

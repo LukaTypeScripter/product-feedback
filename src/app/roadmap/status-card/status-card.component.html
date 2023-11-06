@@ -1,7 +1,11 @@
 <ul class="status__card__list">
     <li>
         <!--Here we should add dynic styles-->
-        <div class="status__card">
+        <div class="status__card" [ngClass]="{
+            'orange__border': planned?.status === 'planned',
+            'purple__border': planned?.status === 'live',
+            'blue__border': planned?.status === 'in-progress'
+          }">
             <div class="status__indicator">
                 <div class="circle" [ngClass]="{
                     'orange': planned?.status === 'planned',
