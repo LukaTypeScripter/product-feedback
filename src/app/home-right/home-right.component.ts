@@ -32,8 +32,5 @@ this.sortCategory = event
   }
   upVoteOnClick(productId: number): void {
     this.dataService.toggleUpvotes(productId);
-
-    // Update your filteredData with the new upvotes, you may not need this step if your view automatically updates
-    // from the datas$ observable in DataService.
   }
 }

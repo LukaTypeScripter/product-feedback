@@ -20,11 +20,10 @@
                 <div class="tab body-xs">{{planned?.status}}</div>
             </a>
             <div class="comments__container">
-                <button class="upvote__btn hor">
-                    <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M1 6l4-4 4 4" stroke="#4661E6" stroke-width="2" fill="none" fill-rule="evenodd" />
-                    </svg>
-                    <b>{{planned?.upvotes}}</b>
+                <button class="upvote__btn hor" (click)="upVoteOnClick(planned?.id ?? 0)" [class.active]="planned?.upvoted">
+                    <svg *ngIf="!planned?.upvoted" width="10" height="7" xmlns="http://www.w3.org/2000/svg"><path d="M1 6l4-4 4 4" stroke="#4661E6" stroke-width="2" fill="none" fill-rule="evenodd"/></svg>
+                <svg *ngIf="planned?.upvoted" width="10" height="7" xmlns="http://www.w3.org/2000/svg"><path d="M1 6l4-4 4 4" stroke="#FFFFFF" stroke-width="2" fill="none" fill-rule="evenodd"/></svg>
+                    <b [class.text-white]="planned?.upvoted">{{planned?.upvotes}}</b>
                 </button>
                 <div class="comments__count">
                     <svg width="18" height="16" xmlns="http://www.w3.org/2000/svg">
