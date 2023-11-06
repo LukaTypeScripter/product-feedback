@@ -8,10 +8,10 @@ import { data } from 'src/app/data';
   providedIn: 'root',
 })
 export class DataService {
- 
+
   public dataSubject = new BehaviorSubject<Data[]>([]);
   private activeCategorySubject = new BehaviorSubject<string>('all');
- 
+
   datas$ = this.dataSubject.asObservable();
   activeCategory$ = this.activeCategorySubject.asObservable();
 
@@ -19,9 +19,11 @@ export class DataService {
   public commentsFilterSubject = new BehaviorSubject<boolean>(false);
    upvotesFilter$ = this.upvotesFilterSubject.asObservable();
    commentsFilter$ = this.commentsFilterSubject.asObservable();
+    productRequests: ProductRequest[] = [];
   constructor() {
     this.dataSubject.next(data);
     this.activeCategorySubject.next('all');
+    this.getProducts()
   }
 
   // Move the combineLatest logic to a method in this service
@@ -85,5 +87,14 @@ export class DataService {
       }
     })
     this.dataSubject.next(updatedData);
+  }
+
+  getNumberOfStatus(status: string, productRequests: ProductRequest[]): number {
+    return productRequests.filter((product) => product.status === status).length;
+  }
+
+  getProducts() {
+      this.productRequests = this.filterByStatus(this.dataSubject.value, ['planned', 'live', 'in-progress'])
+          .flatMap((data) => data.productRequests);
   }
 }

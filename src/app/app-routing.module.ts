@@ -1,13 +1,11 @@
 import { NgModule,OnInit } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { Data } from 'src/models/data.model';
-import { DataService } from 'src/services/data.service';
 import { HomeComponent } from './home-left/home-left.component';
 import { RoadmapComponent } from './roadmap/roadmap.component';
 
 const routes: Routes = [
   {
-    path: "home", 
+    path: "home",
     component: HomeComponent,
   },
   {
