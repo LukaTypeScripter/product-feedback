@@ -13,6 +13,7 @@ import { ButtonComponent } from './button/button.component';
 import { RoadmapComponent } from './roadmap/roadmap.component';
 import { RoadmapHeaderComponent } from './roadmap/roadmap-header/roadmap-header.component';
 import { StatusCardComponent } from './roadmap/status-card/status-card.component';
+import { FeedbackDetailComponent } from './feedback-detail/feedback-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { StatusCardComponent } from './roadmap/status-card/status-card.component
     RoadmapComponent,
     RoadmapHeaderComponent,
     StatusCardComponent,
+    FeedbackDetailComponent,
   ],
   imports: [
     BrowserModule,

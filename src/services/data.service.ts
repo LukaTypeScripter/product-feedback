@@ -24,6 +24,7 @@ export class DataService {
     this.dataSubject.next(data);
     this.activeCategorySubject.next('all');
     this.getProducts()
+    console.log(this.productRequests)
   }
 
   // Move the combineLatest logic to a method in this service
@@ -97,4 +98,14 @@ export class DataService {
       this.productRequests = this.filterByStatus(this.dataSubject.value, ['planned', 'live', 'in-progress'])
           .flatMap((data) => data.productRequests);
   }
+  getSpecificFeedback(id: number): any {
+    console.log('Array before find:', this.productRequests);
+    const filteredRequests = this.productRequests.find(p => {
+      console.log('Checking id:', p.id);
+      return p.id === id;
+    });
+    console.log('Found:', filteredRequests);
+    return filteredRequests;
+  }
+
 }

@@ -23,7 +23,7 @@
                 <svg *ngIf="comments.upvoted" width="10" height="7" xmlns="http://www.w3.org/2000/svg"><path d="M1 6l4-4 4 4" stroke="#FFFFFF" stroke-width="2" fill="none" fill-rule="evenodd"/></svg>
                 <b class="body-xs" [class.text-white]="comments.upvoted">{{comments.upvotes}}</b>
             </button>
-            <a href="#" class="main" >
+            <a (click)="goToFeedbackDetail(comments.id)" class="main" >
                 <h3>{{comments.title}}</h3>
                 <p class="body">{{comments.description}}</p>
                 <div class="tab body-xs">{{comments.category}}</div>
@@ -41,7 +41,7 @@
             </div>
         </div>
     </li>
-    
+
 </ul>
 
 <app-feedback *ngIf="filteredData && filteredData[0]?.length === 0"></app-feedback>

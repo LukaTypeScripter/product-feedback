@@ -1,5 +1,4 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Data } from '@angular/router';
 import { ProductRequest } from 'src/models/data.model';
 import { DataService } from 'src/services/data.service';
 
@@ -10,7 +9,10 @@ import { DataService } from 'src/services/data.service';
 })
 export class RoadmapComponent implements OnInit {
   productRequests: ProductRequest[] = [];
-  constructor(private dataService: DataService) {}
+
+  constructor(private dataService: DataService, ) {
+
+  }
 
   ngOnInit(): void {
       this.productRequests = this.dataService.productRequests

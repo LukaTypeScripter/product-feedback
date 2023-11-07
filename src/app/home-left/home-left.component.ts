@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit,OnDestroy {
   private destroy$ = new Subject<void>();
   constructor(private dataService: DataService) {
     this.filteredData$ = this.dataService.getFilteredData$();
+
   }
 
   ngOnInit() {
